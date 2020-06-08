@@ -1,0 +1,53 @@
+@include('partials/header')
+
+@include('partials/nav')
+        <hr style="height: 20px" width="100%;">
+        <main role="main" class="inner cover">
+        <form action="{{ route('registry.create') }} "method="POST" id="regForm">
+                {{ csrfField() }}
+                <div class="tab">
+                    <h1 class="cover-heading">Seleccione el toner a registrar</h1>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text " for="Toner">Opciones</label>
+                        </div>
+                        <select class="custom-select custom-input" id="Toner" name="toner">
+                            <option selected disabled>Escoje el tipo de toner</option>
+                            @each(toner in Toners)
+                                <option value="{{ toner.name }}">{{toner.name}}</option>
+                            @endeach
+                        </select>
+                    </div>
+                    <input type="hidden" value="Ingreso" name="accion">
+                </div>
+                <div class="tab">
+                    <h1 class="cover-heading">Ingrese la cantidad</h1>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Cantidad</label>
+                        </div>
+                        <input id="Quantity" name="quantity" type="number" class="form-control custom-input" min="0"
+                            placeholder="Ingrese la cantidad">
+                    </div>
+                </div>
+            </form>
+        </main>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <button type="button" class="btn btn-lg btn-secondary btn-next" disabled>Siguiente</button>
+            </div>
+        </div>
+        <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+        </div>
+        <hr style="height: 20px" width="100%;">
+        @include('partials/footer')
+    </div>
+
+    @include('partials/scripts')
+    {{ script('js/main1') }}
+    {{ script('js/moment') }}
+</body>
+
+</html>

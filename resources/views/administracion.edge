@@ -1,0 +1,61 @@
+@include('partials/headeradmin')
+
+@include('partials/nav')
+        <hr style="height: 20px" width="100%;">
+        <main role="main" class="inner cover">
+            <h1 class="cover-heading">Admin Toners <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#exampleModalCenter">Añadir <i class="fas fa-plus"></i></button></h1>
+            <table id="myTable" class="hover table-stripped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Descripcion</th>
+                        <th>Accion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @each(toner in Toners)
+                        <tr>
+                            <td>{{toner.name}}</td>
+                            <td class="">
+                                <form class="delform" action="/toners/{{toner.id}}" method="POST">
+                                    {{ csrfField() }}
+                                    <button type="submit"><i style="color:red;" class="fas fa-trash-alt"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endeach
+                </tbody>
+            </table>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Añadir Toner</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="formadd" action="{{ route('toners.create') }}" method="POST">
+                                    {{ csrfField() }}
+                                    <label for="inputToner" class="sr-only">Modelo de toner</label>
+                                    <input type="text" id="inputToner" name="name" class="form-control" placeholder="Modelo de toner" required autofocus>
+                                    <br>
+                                    <span class="p" id="resp"></span>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" id="btnSend">Guardar</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+        </main>
+        <hr style="height: 20px" width="100%;">
+        @include('partials/footer')
+    </div>
+    @include('partials/scripts')
+    {{ script('js/admin.js')}}
+</body>
+</html>

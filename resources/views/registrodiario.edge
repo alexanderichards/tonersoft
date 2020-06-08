@@ -1,0 +1,37 @@
+@include('partials/header')
+
+@include('partials/nav')
+        <main role="main" class="inner cover">
+            @if(flashMessage('successMessage'))
+                <div class="alert alert-success mt-1 mb-1">{{ flashMessage('successMessage')}}</div>
+            @endif
+            <h1 class="cover-heading">Entrada y salida de toners</h1>
+            <table id="myTable" class="hover table-stripped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Descripcion</th>
+                        <th>Cantidad</th>
+                        <th>Fecha</th>
+                        <th>Accion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @each(record in records)
+                        <tr>
+                            <td>{{ record.name}}</td>
+                            <td>{{ record.quantity}}</td>
+                            <td>{{ record.created_at}}</td>
+                            <td>{{ record.accion}}</td>
+                        </tr>
+                    @endeach
+                </tbody>
+            </table>
+        </main>
+        @include('partials/footer')
+    </div>
+
+    @include('partials/scripts')
+    {{ script('js/main') }}
+</body>
+
+</html>

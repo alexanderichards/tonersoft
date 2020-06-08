@@ -1,0 +1,16 @@
+<body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="masthead mb-auto">
+            <div class="inner">
+                <h3 class="masthead-brand">Toner aplicativo
+                    <img src="{{ assetsUrl('img/logo1.jpg') }}" class="mr-5" width="50" height="50" alt="">
+                </h3>
+                <nav class="nav nav-masthead justify-content-center">
+                    <a class="nav-link {{ request.match('/registrar') ? 'active':'' }}" href="{{ route('/registrar') }}">Registrar <i class="fas fa-plus-square"></i></a>
+                    <a class="nav-link {{ request.match('/retirar') ? 'active':'' }}" href="{{ route('/retirar') }}">Retirar <i class="fas fa-minus-square"></i></a>
+                    <a class="nav-link {{ request.match('/registrodiario') ? 'active':'' }}" href="{{ route('/registrodiario') }}" >Registro Diario <i class="fas fa-list"></i></a>
+                    <a class="nav-link {{ request.match('/') ? 'active':'' }}" href="{{ route('/') }}">Inventario <i class="fas fa-table"></i> </a>
+                    <a class="nav-link {{ request.match('/toners') ? 'active':'' }}" href="{{ route('/toners') }}"><i class="fas fa-cogs"></i> </a>
+                </nav>                
+            </div>
+        </header>

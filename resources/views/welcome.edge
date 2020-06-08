@@ -1,0 +1,33 @@
+@include('partials/header')
+
+@include('partials/nav')
+        <hr style="height: 20px" width="100%;">
+        @if(flashMessage('successMessage'))
+            <div class="alert alert-success mt-1 mb-1">{{ flashMessage('successMessage')}}</div>
+        @endif
+        <main role="main" class="inner cover">
+            <h1 class="cover-heading">Disponibilidad de toners</h1>
+            <table id="myTable" class="hover table-stripped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Descripcion</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @each(toner in Toners)
+                        <tr>
+                            <td>{{toner.toner}}</td>
+                            <td>{{toner.total}}</td>
+                        </tr>
+                    @endeach
+                </tbody>
+            </table>
+        </main>
+        <hr style="height: 20px" width="100%;">
+        @include('partials/footer')
+    </div>
+    @include('partials/buttonscript')
+    {{ script('js/main2')}}
+</body>
+</html>
